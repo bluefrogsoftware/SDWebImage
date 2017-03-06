@@ -79,6 +79,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 
 - (nonnull instancetype)initWithNamespace:(nonnull NSString *)ns {
     NSString *path = [self makeDiskCachePath:ns];
+    //NSLog(@"Cache Path : %@ ", path);
     return [self initWithNamespace:ns diskCacheDirectory:path];
 }
 
@@ -179,7 +180,7 @@ FOUNDATION_STATIC_INLINE NSUInteger SDCacheCostForImage(UIImage *image) {
 }
 
 - (nullable NSString *)makeDiskCachePath:(nonnull NSString*)fullNamespace {
-    NSArray<NSString *> *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSArray<NSString *> *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [paths[0] stringByAppendingPathComponent:fullNamespace];
 }
 
